@@ -1,1 +1,67 @@
+using System;
 
+namespace StudentAdmissionManagement
+{
+    class Student
+    {
+ 
+        private int studentId;
+        private string studentName;
+        private int age;
+        private string gender;
+        private string course;
+        private double fees;
+        public Student(int id, string name, int age, string gender, string course, double fees)
+        {
+            studentId = id;
+            studentName = name;
+            this.age = age;
+            this.gender = gender;
+            this.course = course;
+            this.fees = fees;
+        }
+        public void DisplayStudentDetails()
+        {
+            Console.WriteLine("\n------ Student Admission Details ------");
+            Console.WriteLine("Student ID      : " + studentId);
+            Console.WriteLine("Student Name    : " + studentName);
+            Console.WriteLine("Age             : " + age);
+            Console.WriteLine("Gender          : " + gender);
+            Console.WriteLine("Course          : " + course);
+            Console.WriteLine("Admission Fees  : ₹" + fees);
+           
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("----- Student Admission Management System ------\n");
+            Console.Write("Enter Student ID      : ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter Student Name    : ");
+            string name = Console.ReadLine();
+
+            Console.Write("Enter Age             : ");
+            int age = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter Gender          : ");
+            string gender = Console.ReadLine();
+
+            Console.Write("Enter Course          : ");
+            string course = Console.ReadLine();
+
+            Console.Write("Enter Admission Fees  : ");
+            double fees = Convert.ToDouble(Console.ReadLine());
+
+            Student student1 = new Student(id, name, age, gender, course, fees);
+            student1.DisplayStudentDetails();
+
+            Console.WriteLine("\nAdmission Successfully Completed!");
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
