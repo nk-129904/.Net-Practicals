@@ -1,1 +1,96 @@
+using System;
+
+namespace Practical_2
+{
+    interface IPayroll
+    {
+        void CalculateSalary();
+    }
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Employee Payroll System");
+            Console.WriteLine("1. Full Time Employee");
+            Console.WriteLine("2. Part Time Employee");
+
+            Console.Write("Enter Choice: ");
+            int choice = int.Parse(Console.ReadLine());
+
+            Employee emp;
+
+            if (choice == 1)
+            {
+                emp = new FullTimeEmployee();
+            }
+            else
+            {
+                emp = new PartTimeEmployee();
+            }
+
+            Console.Write("Enter Employee ID: ");
+            emp.employeeId = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter Employee Name: ");
+            emp.employeeName = Console.ReadLine();
+
+            Console.Write("Enter Basic Salary: ");
+            emp.basicSalary = double.Parse(Console.ReadLine());
+
+            
+            ((IPayroll)emp).CalculateSalary();
+
+            Console.WriteLine("\n----- Employee Details -----");
+            emp.Display();
+
+            Console.ReadKey();
+        }
+    }
+
+    public class Employee
+    {
+        public int employeeId;
+        public string employeeName;
+        public double basicSalary;
+        public double netSalary;
+
+        public virtual void Display()
+        {
+            Console.WriteLine("Employee ID     : " + employeeId);
+            Console.WriteLine("Employee Name   : " + employeeName);
+            Console.WriteLine("Basic Salary    : " + basicSalary);
+            Console.WriteLine("Net Salary      : " + netSalary);
+        }
+    }
+
+
+    public class FullTimeEmployee : Employee, IPayroll
+    {
+        public void CalculateSalary()
+        {
+            netSalary = basicSalary + (basicSalary * 0.20) + (basicSalary * 0.10);
+        }
+
+        public override void Display()
+        {
+            base.Display();
+            Console.WriteLine("Employee Type   : Full Time");
+        }
+    }
+
+    public class PartTimeEmployee : Employee, IPayroll
+    {
+        public void CalculateSalary()
+        {
+            netSalary = basicSalary + (basicSalary * 0.10);
+        }
+
+        public override void Display()
+        {
+            base.Display();
+            Console.WriteLine("Employee Type   : Part Time");
+        }
+    }
+}
 
