@@ -1,0 +1,333 @@
+<%@ Page Language="C#" AutoEventWireup="true"
+CodeBehind="EventRegistration.aspx.cs"
+Inherits="OnlineEventRegistration.EventRegistration" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title>Online Event Registration</title>
+</head>
+<body>
+<form id="form1" runat="server">
+<div style="width: 500px; margin: 20px auto; border: 2px solid black;
+padding: 15px;">
+<h2 style="text-align: center;">
+ONLINE EVENT REGISTRATION
+</h2>
+<hr />
+<table style="width: 100%;">
+<tr>
+<td style="width: 130px; padding: 6px;">
+<asp:Label
+ID="lblFullName"
+runat="server"
+Text="Full Name:">
+</asp:Label>
+</td>
+<td style="padding: 6px;">
+<asp:TextBox
+ID="txtFullName"
+runat="server"
+Width="200px"> 
+</asp:TextBox>
+<asp:RequiredFieldValidator
+ID="rfvFullName"
+runat="server"
+ControlToValidate="txtFullName"
+ErrorMessage="* Required"
+ForeColor="Red">
+</asp:RequiredFieldValidator>
+</td>
+</tr>
+<tr>
+<td style="padding: 6px;">
+<asp:Label
+ID="lblEmail"
+runat="server"
+Text="Email Id:">
+</asp:Label>
+</td>
+<td style="padding: 6px;">
+<asp:TextBox
+ID="txtEmail"
+runat="server"
+Width="200px">
+</asp:TextBox>
+<asp:RequiredFieldValidator
+ID="rfvEmail"
+runat="server"
+ControlToValidate="txtEmail"
+ErrorMessage="* Required"
+ForeColor="Red">
+</asp:RequiredFieldValidator>
+<asp:RegularExpressionValidator
+ID="revEmail"
+runat="server"
+ControlToValidate="txtEmail"
+ErrorMessage="* Invalid Email" 
+ForeColor="Red"
+ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$">
+</asp:RegularExpressionValidator>
+</td>
+</tr>
+<tr>
+<td style="padding: 6px;">
+<asp:Label
+ID="lblContact"
+runat="server"
+Text="Contact No.:">
+</asp:Label>
+</td>
+<td style="padding: 6px;">
+<asp:TextBox
+ID="txtContact"
+runat="server"
+Width="200px">
+</asp:TextBox>
+<asp:RequiredFieldValidator
+ID="rfvContact"
+runat="server"
+ControlToValidate="txtContact"
+ErrorMessage="* Required"
+ForeColor="Red">
+</asp:RequiredFieldValidator>
+<asp:RegularExpressionValidator
+ID="revContact"
+runat="server"
+ControlToValidate="txtContact"
+ErrorMessage="* Enter 10 digits"
+ForeColor="Red"
+ValidationExpression="^[0-9]{10}$">
+</asp:RegularExpressionValidator>
+</td>
+</tr>
+<tr>
+<td style="padding: 6px;">
+<asp:Label
+ID="lblCollege"
+runat="server"
+Text="College:">
+</asp:Label>
+</td>
+<td style="padding: 6px;">
+<asp:TextBox
+ID="txtCollege"
+runat="server"
+Width="200px">
+</asp:TextBox>
+<asp:RequiredFieldValidator
+ID="rfvCollege"
+runat="server"
+ControlToValidate="txtCollege"
+ErrorMessage="* Required"
+ForeColor="Red">
+</asp:RequiredFieldValidator>
+</td>
+</tr>
+<tr>
+<td style="padding: 6px; vertical-align: top;">
+<asp:Label
+ID="lblDepartment"
+runat="server"
+Text="Department:">
+</asp:Label>
+</td>
+<td style="padding: 6px;">
+<asp:RadioButtonList
+ID="rblDepartment"
+runat="server"
+RepeatDirection="Vertical"> 
+<asp:ListItem>Computer</asp:ListItem>
+<asp:ListItem>Mechanical</asp:ListItem>
+<asp:ListItem>Chemical</asp:ListItem>
+<asp:ListItem>Civil</asp:ListItem>
+</asp:RadioButtonList>
+<asp:RequiredFieldValidator
+ID="rfvDepartment"
+runat="server"
+ControlToValidate="rblDepartment"
+ErrorMessage="* Select Department"
+ForeColor="Red">
+</asp:RequiredFieldValidator>
+</td>
+</tr>
+<tr>
+<td style="padding: 6px;">
+<asp:Label
+ID="lblEvent"
+runat="server"
+Text="Event:">
+</asp:Label>
+</td>
+<td style="padding: 6px;">
+<asp:DropDownList
+ID="ddlEvent"
+runat="server"
+Width="210px">
+<asp:ListItem
+Text="-- Select Event --"
+Value="">
+</asp:ListItem>
+<asp:ListItem
+Text="Hackathon"
+Value="Hackathon">
+</asp:ListItem>
+<asp:ListItem
+Text="Coding Competition"
+Value="Coding Competition">
+</asp:ListItem>
+<asp:ListItem
+Text="Tech Fest"
+Value="Tech Fest">
+</asp:ListItem>
+<asp:ListItem
+Text="AI Workshop"
+Value="AI Workshop">
+</asp:ListItem>
+</asp:DropDownList>
+<asp:RequiredFieldValidator
+ID="rfvEvent"
+runat="server"
+ControlToValidate="ddlEvent"
+InitialValue=""
+ErrorMessage="* Select Event"
+ForeColor="Red">
+</asp:RequiredFieldValidator>
+</td>
+</tr>
+<tr>
+<td style="padding: 6px;">
+<asp:Label
+ID="lblGender"
+runat="server"
+Text="Gender:">
+</asp:Label>
+</td>
+<td style="padding: 6px;">
+<asp:RadioButtonList
+ID="rblGender"
+runat="server"
+RepeatDirection="Horizontal"
+RepeatLayout="Flow">
+<asp:ListItem>Male</asp:ListItem>
+<asp:ListItem>Female</asp:ListItem>
+</asp:RadioButtonList>
+<asp:RequiredFieldValidator
+ID="rfvGender"
+runat="server"
+ControlToValidate="rblGender"
+ErrorMessage="* Select Gender"
+ForeColor="Red">
+</asp:RequiredFieldValidator>
+</td>
+</tr>
+<tr>
+<td style="padding: 6px; vertical-align: top;">
+<asp:Label
+ID="lblSkills"
+runat="server"
+Text="Skills:">
+</asp:Label>
+</td>
+<td style="padding: 6px;">
+<asp:CheckBoxList
+ID="cblSkills"
+runat="server"
+RepeatDirection="Horizontal"
+RepeatLayout="Flow">
+<asp:ListItem>C#</asp:ListItem>
+<asp:ListItem>Python</asp:ListItem>
+<asp:ListItem>AI</asp:ListItem>
+</asp:CheckBoxList>
+</td>
+</tr>
+<tr>
+<td style="padding: 6px; vertical-align: top;">
+<asp:Label
+ID="lblAddress"
+runat="server" 
+Text="Address:">
+</asp:Label>
+</td>
+<td style="padding: 6px;">
+<asp:TextBox
+ID="txtAddress"
+runat="server"
+TextMode="MultiLine"
+Rows="3"
+Columns="25">
+</asp:TextBox>
+<asp:RequiredFieldValidator
+ID="rfvAddress"
+runat="server"
+ControlToValidate="txtAddress"
+ErrorMessage="* Required"
+ForeColor="Red">
+</asp:RequiredFieldValidator>
+</td>
+</tr>
+<tr>
+<td></td>
+<td style="padding: 6px;">
+<asp:CheckBox
+ID="chkTerms"
+runat="server"
+Text="I accept the Terms and Conditions">
+</asp:CheckBox>
+<asp:CustomValidator
+ID="cvTerms"
+runat="server"
+ErrorMessage="* Accept Terms"
+ForeColor="Red"
+OnServerValidate="cvTerms_ServerValidate">
+</asp:CustomValidator>
+</td>
+</tr> 
+<tr>
+<td></td>
+<td style="padding: 6px;">
+<asp:Button
+ID="btnSubmit"
+runat="server"
+Text="SUBMIT"
+OnClick="btnSubmit_Click">
+</asp:Button>
+</td>
+</tr>
+</table>
+<br />
+<asp:Label
+ID="lblMessage"
+runat="server"
+ForeColor="Green">
+</asp:Label>
+</div>
+</form>
+</body>
+</html> 
+using System;
+using System.Drawing;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+namespace OnlineEventRegistration
+{
+ public partial class EventRegistration : Page
+ {
+ protected void Page_Load(object sender, EventArgs e)
+ {
+ }
+ protected void btnSubmit_Click(object sender, EventArgs e)
+ {
+ if (Page.IsValid)
+ {
+ lblMessage.Text = "Registration Successful!";
+ lblMessage.ForeColor = Color.Green;
+ }
+ }
+ protected void cvTerms_ServerValidate(
+ object source,
+ ServerValidateEventArgs args)
+ {
+ args.IsValid = chkTerms.Checked;
+ }
+ }
+}
